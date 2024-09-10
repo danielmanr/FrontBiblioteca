@@ -1,0 +1,19 @@
+<div class="p-10 pb-3">
+    <h1 class>Listado de Libros</h1>
+    <br>
+    <button type="button" class="text-white
+    bg-blue-700 hover:bg-blue-800 
+    focus:ring-4 focus:ring-blue-300 
+    font-medium rounded-lg text-sm 
+    padding-custom me-2 mb-2
+    dark:bg-blue-600 dark:hover:bg-blue-700 
+    focus:outline-none dark:focus:ring-blue-800" 
+    (click)="nuevoLibro()"
+    >Crear Libro</button>
+</div>
+<app-tabla-data 
+[titulo]="title"
+[column]="columnas"
+[data]="libroList"
+(action)="onAction($event)"
+></app-tabla-data>

@@ -1,0 +1,75 @@
+<main class="p-10 pt-0">
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                @for(column of columns; track $index){
+                    <th scope="col" class="px-6 py-3 text-center">
+                        {{column}}
+                    </th>
+                }
+                <th scope="col" class="px6 py-3 text-center">
+                    Acciones
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(data of dataSourse; track $index){
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+
+                    @for( nombre of columns; track $index ){
+                        <td class="px6 py-4 text-center">
+                            @if(data[nombre] === false){
+                                <div class="flex justify-center items-center h-full">
+                                    <svg class="w-5 h-5 text-red-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m6 6 12 12m3-6a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                                    </svg>
+                                </div>      
+                            }
+                            @else if (data[nombre] === true){
+                                <div class="flex justify-center items-center h-full">
+                                    <svg class="w-6 h-6 text-green-600 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm13.707-1.293a1 1 0 0 0-1.414-1.414L11 12.586l-1.793-1.793a1 1 0 0 0-1.414 1.414l2.5 2.5a1 1 0 0 0 1.414 0l4-4Z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                            }
+                            @else{
+                                {{ data[nombre] }}
+                            }
+                            
+                        </td>
+                    }
+                    <td class="px-6 py-4 flex items-center space-x-3 text-center">
+
+                        <svg class="w-5 h-5 text-gray-800 dark:text-white cursor-pointer" 
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" 
+                        width="24" height="24" fill="none" viewBox="0 0 24 24"
+                        (click)="onAction('Editar', data)"
+                        >
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"/>
+                        </svg>
+                        
+                    <span>
+                        <svg class="w-5 h-5 text-red-500 dark:text-white cursor-pointer" 
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" 
+                        width="24" height="24" fill="none" viewBox="0 0 24 24"
+                        (click)="onAction('Eliminar',data)"
+                        >
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z"/>
+                        </svg>
+                    </span>
+
+                    <span>
+                        <svg class="w-6 h-6 text-green-600 dark:text-white cursor-pointer" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M9 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4H7Zm8-1a1 1 0 0 1 1-1h1v-1a1 1 0 1 1 2 0v1h1a1 1 0 1 1 0 2h-1v1a1 1 0 1 1-2 0v-1h-1a1 1 0 0 1-1-1Z" clip-rule="evenodd"/>
+                        </svg>
+                    </span>
+                      
+                    
+                    </td>
+                </tr>      
+            }
+        </tbody>
+    </table>
+</div>
+</main>

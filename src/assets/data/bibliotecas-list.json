@@ -1,0 +1,12 @@
+[
+    {
+        "nombre": "biblioteca1",
+        "ciudad": "Bogota",
+        "libros": ["libro1", "libro2"] 
+    },
+    {
+       "nombre": "biblioteca2",
+        "ciudad": "Medellin",
+        "libros": ["libro2","libro3"] 
+    }
+]

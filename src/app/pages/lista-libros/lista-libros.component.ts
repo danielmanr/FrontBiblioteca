@@ -26,7 +26,6 @@ export default class ListaLibrosComponent implements OnInit {
   title:string = 'Libro';
 
   ngOnInit(): void {
-    
     this.columnas = getEntityPropiedades('libro');
     
     this.libroService.obtenerLibrosList().subscribe(data => {
@@ -47,7 +46,7 @@ export default class ListaLibrosComponent implements OnInit {
    console.log("editar", objeto)
  }
 
- eliminar(autor:string){
+ eliminar(autor:any){
    console.log("eliminar",autor)
  }
 

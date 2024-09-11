@@ -26,7 +26,7 @@ export class FormularioComponent implements OnInit {
     estado: [true]
   });
 
-  constructor(private router: Router) {}
+  constructor(private libroService: LibroService, private router:Router) {}
 
   ngOnInit(): void {
     // Obtener el parámetro 'id' de la URL

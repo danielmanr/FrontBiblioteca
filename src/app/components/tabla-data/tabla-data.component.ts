@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Accion } from '../../models/TablaColumna';
+import { LibroService } from '../../services/libro.service';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -14,6 +17,9 @@ export class TablaDataComponent {
   title = '';
   columns : string[] = [];
   dataSourse : any = [];
+
+  constructor(private libroService: LibroService, private router:Router){}
+
 
 
   @Input() set titulo(title: any){
@@ -32,8 +38,36 @@ export class TablaDataComponent {
 
   @Output() action: EventEmitter <Accion> = new EventEmitter();
 
-  onAction(accion: string, row?: any){
-    this.action.emit({accion:accion, fila:row});
-  }
+  onAction(row?: any){
+    const id = row._ObjectId;
+    console.log(id);
+    this.libroService.eliminarLibro(id).subscribe({
+      next: (data) => {
+        this.reloadPage();
+        this.router.navigate(['/'])
+      },error: (err) => {
+        console.error('Error al crear libro', err.message);
+      }
+  });
+}
+
+
+activarLibro(row?: any){
+  const id = row._ObjectId;
+    console.log(id);
+    this.libroService.eliminarLibro(id).subscribe({
+      next: (data) => {
+        this.reloadPage();
+        this.router.navigate(['/'])
+      },error: (err) => {
+        console.error('Error al crear libro', err.message);
+      }
+  });
+}
+
+reloadPage():void {
+  window.location.reload();
+}
+
 
 }

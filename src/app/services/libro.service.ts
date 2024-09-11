@@ -28,6 +28,11 @@ export class LibroService {
     return this.http.put<ILibro>(`${this.apiUrl}`,datos)
   }
 
+  eliminarLibro(id:string):Observable<string>{
+    return this.http.delete<any>(`${this.apiUrl}/${id}`)
+  }
+
+
   obtenerId(): Observable<number>{
     return this.http.get<number>(`${this.apiUrl}/NuevoId`);
   }
